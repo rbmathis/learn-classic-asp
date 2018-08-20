@@ -13,10 +13,10 @@
           <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
               <li class="uk-active"><a href="default.asp" style="cursor:pointer;">Home</a></li>
+              <li class="uk-active"><a href='<%=Request.ServerVariables("SCRIPT_NAME")%>?showcode=true' style="cursor:pointer;">Show Code</a></li>
             </ul>
           </div>
         </div>
       </nav>
       <div class="main-content">
     <!-- main content is in here -->
-  

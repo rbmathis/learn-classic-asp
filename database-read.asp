@@ -1,4 +1,4 @@
-<!--#include file="./models/country.asp" -->
+<!--#include file="./models/product.asp" -->
 <%
   ' --------------------------------------------------------
   '                     VBSCRIPT PART 
@@ -12,27 +12,27 @@
 
   ' create an instance of ADO connection and recordset objects
   Set connection = Server.CreateObject("ADODB.Connection")
-  Set countries = Server.CreateObject("Scripting.Dictionary")
+  Set products = Server.CreateObject("Scripting.Dictionary")
   
   ' open connection in the database
   connection.ConnectionString = connectionString
   connection.Open()
   
-  Dim myCountry, seq
-  Set recordset = connection.Execute("select * from tb_countries")
+  Dim myProduct, seq
+  Set recordset = connection.Execute("select * from Products")
   seq = 0
   Do While Not recordset.EOF
     seq = seq+1
-    set myCountry = New Country
-    myCountry.Title = recordset.Fields("name")
-    myCountry.Code = recordset.Fields("code")
-    myCountry.Currencies = recordset.Fields("currency")
-    myCountry.Capital = recordset.Fields("capital")
-    myCountry.Population = recordset.Fields("population")
-    countries.add seq, myCountry
+    set myProduct = New Product
+    myProduct.SKU = recordset.Fields("SKUNumber")
+    myProduct.Title = recordset.Fields("Title")
+    myProduct.Description = recordset.Fields("Description")
+    myProduct.Price = recordset.Fields("Price")
+    products.add seq, myProduct
     recordset.MoveNext
   Loop 
   connection.Close()
+
 %>
 
 <%
@@ -42,25 +42,23 @@
 %>
 <!--#include file="layouts/header.asp"-->
   <h1 class="uk-title">Database Read </h1>
-  <h3 class="uk-title">List of Countries </h3>
+  <h3 class="uk-title">List of Products </h3>
   <table class="uk-table uk-table-divider">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Capital</th>
-        <th>Currency</th>
-        <th>Population</th>
+        <th>SKU</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
       </tr>
     </thead>
     <tbody>
-      <% For Each item in countries %> 
+      <% For Each item in products %> 
       <tr>
-        <td><%= countries(item).Title %></td>
-        <td><%= countries(item).Code %></td>
-        <td><%= countries(item).Capital %></td>
-        <td><%= countries(item).Currencies %></td>
-        <td><%= countries(item).Population %></td>
+        <td><%= products(item).SKU %></td>
+        <td><%= products(item).Title %></td>
+        <td><%= products(item).Description %></td>
+        <td><%= products(item).Price %></td>
       </tr>
       <% Next %>
     </tbody>
