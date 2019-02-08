@@ -3,10 +3,11 @@
   <h1>Read File</h1>
 
   <%
+    On Error Resume Next
     Dim fso, file, fileSpec, fileName
     Dim countrySplit
 
-    fileName = Application("rootURL") & "/files/countries.txt"
+    fileName = "/files/newfile.txt"
     fileSpec = Server.MapPath(fileName)
     
     ' OpenTextFile has several mode 
@@ -15,14 +16,25 @@
     ' 8 for append file content
     ' see : https://msdn.microsoft.com/en-us/library/314cz14s.aspx
     Set fso = CreateObject("Scripting.FileSystemObject")
-    Set file = fso.OpenTextFile(filespec,1) 
 
-    Response.write "Reading file " & fileName & "<br/><br/>"
-    Do While Not file.AtEndOfStream
-      countrySplit = Split(file.ReadLine, ",")
-      Response.write countrySplit(0) &": "& countrySplit(1) &"<br/>"
-    Loop
+    If fso.FileExists(filespec) Then
 
+      Set file = fso.OpenTextFile(filespec,1) 
+
+      Response.write "Reading file " & fileSpec & "<br/><br/>"
+      Do While Not file.AtEndOfStream
+        line = file.ReadLine()
+        Response.write line &"<br/>"
+        Response.Flush()
+      Loop
+
+        file.Close()
+        file=Nothing
+
+    Else
+      Response.Write "File doesn't exist at : " & filespec
+
+    End If
   %>
 <!--#include file="layouts/footer.asp"-->
 

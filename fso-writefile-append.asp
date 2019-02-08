@@ -6,7 +6,7 @@
     Dim fso, file, fileSpec, fileName
     Dim countrySplit
 
-    fileName = Application("rootURL") & "/files/cities.txt"
+    fileName ="/files/newfile.txt"
     fileSpec = Server.MapPath(fileName)
     
     ' OpenTextFile has several mode 

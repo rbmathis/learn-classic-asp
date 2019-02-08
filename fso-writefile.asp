@@ -6,7 +6,7 @@
     Dim fso, file, fileSpec, fileName
     Dim countrySplit
 
-    fileName = Application("rootURL") & "/files/cities.txt"
+    fileName = "/files/newfile.txt"
     fileSpec = Server.MapPath(fileName)
     
     ' OpenTextFile has several mode 
@@ -15,9 +15,14 @@
     ' 8 for append file content
     ' see : https://msdn.microsoft.com/en-us/library/314cz14s.aspx
     Set fso = CreateObject("Scripting.FileSystemObject")
+
+If Not fso.FileExists(fileSpec) Then
+  fso.CreateTextFile(fileSpec)
+End If
+
     Set file = fso.OpenTextFile(filespec,2) 
 
-    Response.write "Writing file " & fileName & "<br/><br/>"
+    Response.write "Writing file " & filespec & "<br/><br/>"
 
     file.WriteLine "This is my first sentence. And then second sentence."
     file.WriteLine "written at " & Now

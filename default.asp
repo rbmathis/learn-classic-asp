@@ -26,8 +26,6 @@
   <li>Write File Append(<a href="fso-writefile-append.asp">demo</a>)</li>
   <li>Server Variable (<a href="server-variable.asp">demo</a>)</li>
   <li>Database Read (<a href="database-read.asp">demo</a>)</li>
-  <li>Database Write (<a href="database-write.asp">demo</a>)</li>
-  <li>Database Update (<a href="database-update.asp">demo</a>)</li>
 </ol>
 
 <!--#include file="layouts/footer.asp"-->

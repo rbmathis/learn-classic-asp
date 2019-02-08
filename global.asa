@@ -3,8 +3,8 @@
 ' place all global configuration here
 Sub Application_OnStart
   Application("visitors") = 0
-  Application("rootURL") = "/learn-classic-asp"
-  Application("connectionString") = "Provider=SQLOLEDB.1;Data Source=USSER-PC\SQLEXPRESS;Database=learnasp;User Id=sa;Password=adminadmin"
+  Application("rootURL") = ""
+  Application("connectionString") = ""
 End Sub
 
 Sub Session_OnStart

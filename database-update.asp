@@ -1,4 +1,4 @@
-<!--#include file="./models/post.asp" -->
+<!--#include file="./models/product.asp" -->
 <%
   ' --------------------------------------------------------
   '                     VBSCRIPT PART 
@@ -8,14 +8,12 @@
   currentURL = Request.ServerVariables("URL")
 
   ' ------------------- FORM VALIDATION ------------------
-  Dim seq, title, content, status, submit, statusOptions, statusOption
+  Dim id, title, description, price
   Dim titleMessage, contentMessage, statusMessage, submitMessage
-  seq = Request.QueryString("seq")
+  id = Request.QueryString("id")
   title = Request.Form("title")
-  content = Request.Form("content")
-  status = Request.Form("status")
-  submit = Request.Form("submit")
-  statusOptions = Array("published", "draft")
+  description  = Request.Form("description")
+
   ' ------------------ DATABASE PREPARATION -------------------
   ' declare the variables
   Dim connection, recordsetList, recordsetSingle

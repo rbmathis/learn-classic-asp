@@ -2,6 +2,7 @@
 <!--#include file="layouts/header.asp"-->
   <h1>File System Object (FSO) - List folder and file</h1>
   <%
+  On Error Resume Next
     ' reference http://html.net/tutorials/asp/lesson14.asp
     ' anything related to CreateObject should use "Set" to set the variable
 

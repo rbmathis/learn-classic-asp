@@ -35,6 +35,30 @@
 
     <% End If %>
   
+    <%
+    dim objErr
+    set objErr=Server.GetLastError()
+    
+    If objErr.Number > 0 Then
+    response.write("ASPCode=" & objErr.ASPCode)
+    response.write("<br>")
+    response.write("ASPDescription=" & objErr.ASPDescription)
+    response.write("<br>")
+    response.write("Category=" & objErr.Category)
+    response.write("<br>")
+    response.write("Column=" & objErr.Column)
+    response.write("<br>")
+    response.write("Description=" & objErr.Description)
+    response.write("<br>")
+    response.write("File=" & objErr.File)
+    response.write("<br>")
+    response.write("Line=" & objErr.Line)
+    response.write("<br>")
+    response.write("Number=" & objErr.Number)
+    response.write("<br>")
+    response.write("Source=" & objErr.Source)
+    End If
+    %>
     
 
     
@@ -47,5 +71,8 @@
     <script type="text/javascript">
       hljs.initHighlightingOnLoad();
     </script>
+    <%
+    
+    %>
   </body>
 </html>
